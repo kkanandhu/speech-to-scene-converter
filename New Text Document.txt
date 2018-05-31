@@ -1,0 +1,55 @@
+
+
+
+
+
+
+import bpy
+import os
+
+lis="penta on teapot"
+liss=lis.split()
+
+main_loc='F:/project/Assets/'
+
+file_loc =main_loc+liss[-1]+".obj"
+
+bpy.ops.import_scene.obj(filepath=file_loc)
+
+
+
+bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
+base = bpy.context.selected_objects[0]
+
+height=base.dimensions.z
+base.location=(0,0,height/2)
+
+file_loc =main_loc+liss[0]+".obj"
+bpy.ops.import_scene.obj(filepath=file_loc)
+bpy.ops.object.origin_set(type='ORIGIN_GEOMETRY', center='BOUNDS')
+child= bpy.context.selected_objects[0]
+child.location=(0,0,height)
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
+bpy.ops.import_scene.obj(filepath=file_loc)
+
+
+file_loc = 'F:/platform.blend'
+bpy.ops.wm.open_mainfile(filepath=file_loc)
+file_loc = 'F:/penta.obj'
+bpy.ops.import_scene.obj(filepath=file_loc)
+file_loc = 'F:/project/penta.html'
+bpy.ops.export_scene.b4w_html(filepath=file_loc)
+'''
